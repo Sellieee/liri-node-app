@@ -37,3 +37,12 @@ switch (option) {
       doThis(input);
       break;
 };
+
+function concertThis(input) {
+   axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(function (response) {
+      var concertResults =
+         console.log(concertResults);
+   }).catch(function (error) {
+      console.log(error);
+   });
+}
