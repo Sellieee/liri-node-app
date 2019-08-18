@@ -22,6 +22,7 @@ var option = process.argv[2];
 // Takes user's search term
 var input = process.argv[3];
 
+// Trying the switch statement instead of if/else statements
 switch (option) {
    case "concert-this":
       concertThis(input);
@@ -35,4 +36,4 @@ switch (option) {
    case "do-what-it-says":
       doThis(input);
       break;
-}
+};
