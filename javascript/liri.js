@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Use Spotify API to get keys from keys.js
-var keys = require("./javascript/keys.js");
+var keys = require("./keys");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
 
@@ -40,9 +40,17 @@ switch (option) {
 
 function concertThis(input) {
    axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(function (response) {
-      var concertResults =
-         console.log(concertResults);
+
+      // Create loop to run through response.data
+      for (var i = 0; i < response.data.length; i++) {
+         console.log(response.data)
+         //          var concertResults = "\nVenue Name: " + response.data[i]
+      }
+      //       console.log(concertResults);
    }).catch(function (error) {
       console.log(error);
    });
 }
+// var venueName =
+//    var venueLocation =
+//       var eventDate = MMDDYYY
