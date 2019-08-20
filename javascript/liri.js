@@ -39,18 +39,19 @@ switch (option) {
 };
 
 function concertThis(input) {
-   axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(function (response) {
-
-      // Create loop to run through response.data
-      for (var i = 0; i < response.data.length; i++) {
+   axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp")
+      .then(function (response) {
+         console.log("concertThis ran!")
+         console.log(input);
+         // // Create loop to run through response.data
          console.log(response.data)
-         //          var concertResults = "\nVenue Name: " + response.data[i]
-      }
-      //       console.log(concertResults);
-   }).catch(function (error) {
-      console.log(error);
-   });
+         for (var i = 0; i < response.data.length; i++) {
+            var concertResults = "\nVenue Name: " + response.data[i].venue.name +
+               "\nVenue Location: " + response.data[i].venue.city
+            // // "\nEvent Date: " + moment()
+            console.log(concertResults);
+         }
+      }).catch(function (error) {
+         console.log(error);
+      });
 }
-// var venueName =
-//    var venueLocation =
-//       var eventDate = MMDDYYY
