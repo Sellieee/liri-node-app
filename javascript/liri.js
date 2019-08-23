@@ -47,8 +47,8 @@ function concertThis(input) {
          console.log(response.data)
          for (var i = 0; i < response.data.length; i++) {
             var concertResults = "\nVenue Name: " + response.data[i].venue.name +
-               "\nVenue Location: " + response.data[i].venue.city
-            // // "\nEvent Date: " + moment()
+               "\nVenue Location: " + response.data[i].venue.city +
+               "\nEvent Date: " + moment(response.data[i].datetime).format("DD-MM-YYYY");
             console.log(concertResults);
          }
       }).catch(function (error) {
