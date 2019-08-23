@@ -102,3 +102,13 @@ function movieThis(input) {
       console.log(error);
    })
 }
+
+function doThis(input) {
+   fs.readFile("random.txt", "utf8", function (error, data) {
+      if (error) {
+         return console.log(error);
+      }
+      var dataArr = data.split(",");
+      spotifySong(dataArr[0], dataArr[1]);
+   })
+}
