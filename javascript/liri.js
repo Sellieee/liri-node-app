@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Use Spotify API to get keys from keys.js
-var keys = require("./keys");
+var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
 
@@ -44,14 +44,61 @@ function concertThis(input) {
          console.log("concertThis ran!")
          console.log(input);
          // // Create loop to run through response.data
-         console.log(response.data)
+         // console.log(response.data)
          for (var i = 0; i < response.data.length; i++) {
-            var concertResults = "\nVenue Name: " + response.data[i].venue.name +
+            var concertResults = "\n------------------------------" + "\nVenue Name: " + response.data[i].venue.name +
                "\nVenue Location: " + response.data[i].venue.city +
-               "\nEvent Date: " + moment(response.data[i].datetime).format("DD-MM-YYYY");
+               "\nEvent Date: " + moment(response.data[i].datetime).format("DD-MM-YYYY") + "\n------------------------------";
             console.log(concertResults);
          }
       }).catch(function (error) {
          console.log(error);
       });
+}
+
+function spotifySong(input) {
+   if (!input) {
+      input = "The Sign";
+   }
+   spotify.search({
+         type: "track",
+         query: input
+      }).then(function (response) {
+         console.log(response)
+         //    for (var i = 0; i < 5; i++) {
+         //       var spotifyResults = {
+         //          "\n------------------------------"+ 
+         // "\nArtist's Name: " + 
+         // "\nSong Name: " + 
+         // "\nPreview Link on Spotify: 
+         // " + "Album: " + 
+         // "\n------------------------------"
+         //       console.log(spotifyResults);
+         //       }
+         //    }
+      })
+      .catch(function (error) {
+         console.log(error);
+      });
+}
+
+function movieThis(input) {
+   if (!input) {
+      input = "Mr Nobody";
+   }
+   axios.get("https://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy").then(function (response) {
+      console.log(response);
+      var movieResults = "\n------------------------------" +
+         "\nMovie Title: " + response.data.Title +
+         "\nRelease Year: " + response.data.Year +
+         "\nIMDB Rating: " + response.data.imdbRating +
+         "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value +
+         "\nCountry: " + response.data.Country +
+         "\nLanguage " + response.data.Language +
+         "\nPlot: " + response.data.Plot +
+         "\nActors/Actresses: " + response.data.Actors + "\n------------------------------";
+      console.log(movieResults);
+   }).catch(function (error) {
+      console.log(error);
+   })
 }
