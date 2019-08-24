@@ -118,7 +118,7 @@ function movieThis(input) {
             "\nMovie Title: " +
             movieResponse.Title +
             "\nRelease Year: " +
-            movieResponse.data.Year +
+            movieResponse.Year +
             "\nIMDB Rating: " +
             movieResponse.imdbRating +
             "\nRotten Tomatoes Rating: " +
