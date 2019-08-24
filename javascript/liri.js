@@ -77,47 +77,32 @@ function spotifySong(input) {
       .search({
          type: "track",
          query: input,
-         limit: 3
+         limit: 5
       })
       .then(function (response) {
-         console.log(response.tracks.items[i].album.artists)
-         // for (var i = 0; i < response.tracks.items.length; i++) {
-         //    console.log(response.tracks.items[i].album.artists);
-         //    var spotifyResults =
-         //       "\n------------------------------" +
-         //       "\nArtist's Name: " + response.tracks.items[i]
-         //    console.log(spotifyResults);
+         // console.log(response.tracks.items[0].album.artists[0].name)
+         for (var i = 0; i < response.tracks.items.length; i++) {
+            // console.log(response.tracks.items[i].album.artists);
+            var spotifyResponse = response.tracks.items[i];
+            var spotifyResults =
+               "\n------------------------------" +
+               "\nArtist's Name: " + spotifyResponse.artists[0].name +
+               "\nSong Name: " + spotifyResponse.name +
+               "\nPreview Link on Spotify: " + spotifyResponse.external_urls.spotify +
+               "\nAlbum: " + spotifyResponse.album.name +
+               "\n------------------------------"
+            console.log(spotifyResults);
+         }
+
       })
-}
-// var spotifyResults =
-//    "\n------------------------------" +
-//    "\nArtist's Name: " +
+};
 //    response.tracks.items;
 
-
-// console.log(response.tracks.items)
-
-// response.tracks.items.forEach(function (track, i) {
-//    if (i === 0) {
-//       console.log(track)
-
-// })
-
-// console.log({
-//    response
-// });
-// for (var i = 0; i < response.tracks.items.length; i++) {
-//    // console.log(response.tracks.items[i]);
-//    var spotifyResults =
-//       "\n------------------------------" +
-//       "\nArtist's Name: " +
-//       response.tracks.items[i];
 //    // "\nSong Name: " +
 //    // "\nPreview Link on Spotify:
 //    // " + "
 //    // Album: " +
 //    // "\n------------------------------"
-//    // console.log(spotifyResults.response.items);
 // }
 // // })
 // .catch(function (error) {
