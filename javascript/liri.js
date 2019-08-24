@@ -94,20 +94,10 @@ function spotifySong(input) {
             console.log(spotifyResults);
          }
 
-      })
-};
-//    response.tracks.items;
-
-//    // "\nSong Name: " +
-//    // "\nPreview Link on Spotify:
-//    // " + "
-//    // Album: " +
-//    // "\n------------------------------"
-// }
-// // })
-// .catch(function (error) {
-//    console.log(error);
-// });
+      }).catch(function (error) {
+         console.log(error);
+      });
+}
 
 
 function movieThis(input) {
@@ -121,25 +111,26 @@ function movieThis(input) {
          "&y=&plot=short&apikey=trilogy"
       )
       .then(function (response) {
-         console.log(response);
+         // console.log(response);
+         var movieResponse = response.data;
          var movieResults =
             "\n------------------------------" +
             "\nMovie Title: " +
-            response.data.Title +
+            movieResponse.Title +
             "\nRelease Year: " +
-            response.data.Year +
+            movieResponse.data.Year +
             "\nIMDB Rating: " +
-            response.data.imdbRating +
+            movieResponse.imdbRating +
             "\nRotten Tomatoes Rating: " +
-            response.data.Ratings[1].Value +
+            movieResponse.Ratings[1].Value +
             "\nCountry: " +
-            response.data.Country +
+            movieResponse.Country +
             "\nLanguage " +
-            response.data.Language +
+            movieResponse.Language +
             "\nPlot: " +
-            response.data.Plot +
+            movieResponse.Plot +
             "\nActors/Actresses: " +
-            response.data.Actors +
+            movieResponse.Actors +
             "\n------------------------------";
          console.log(movieResults);
       })
@@ -152,8 +143,10 @@ function doThis(input) {
    fs.readFile("random.txt", "utf8", function (error, data) {
       if (error) {
          return console.log(error);
-      }
-      var dataArr = data.split(",");
-      spotifySong(dataArr[0], dataArr[1]);
+      } else
+         var dataArr = data.split(",");
+      // console.log(dataArr[0]);
+      // console.log(dataArr[1]);
+      spotifySong(dataArr[1])
    });
 }
